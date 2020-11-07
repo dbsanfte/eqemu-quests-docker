@@ -35,5 +35,6 @@ WORKDIR /home/eqemu
 USER eqemu
 
 VOLUME /home/eqemu/quests
+VOLUME /home/eqemu/quests/plugins
 
 ENTRYPOINT ["/usr/bin/tail", "-f", "/dev/null"]
