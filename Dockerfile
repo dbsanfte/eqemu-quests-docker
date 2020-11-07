@@ -29,12 +29,14 @@ RUN apt-get remove -y git wget curl && \
     apt-get autoremove -y && \
     apt-get clean cache
 
-RUN chown -R eqemu:eqemu /home/eqemu
+RUN mkdir -p /home/eqemu/plugins && \
+    cp -R /home/eqemu/quests/plugins/* /home/eqemu/plugins && \
+    chown -R eqemu:eqemu /home/eqemu
 
 WORKDIR /home/eqemu
 USER eqemu
 
 VOLUME /home/eqemu/quests
-VOLUME /home/eqemu/quests/plugins
+VOLUME /home/eqemu/plugins
 
 ENTRYPOINT ["/usr/bin/tail", "-f", "/dev/null"]
